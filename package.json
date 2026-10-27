@@ -1,0 +1,17 @@
+{
+  "name": "hogwarts",
+  "version": "1.0.0",
+  "description": "The backend for the Hogwarts project",
+  "main": "server.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.3.0",
+    "nodemon": "^3.1.14"
+  }
+}

@@ -1,0 +1,17 @@
+
+PUT for teachers og students:
+PUT /teachers/:id
+	find id'et fra routen (request)
+
+    hvis den ikke findes i databasen - return 404
+    Ellers:
+    find vores body-teacher 
+    find den teacher i databasen med det id
+
+    Ændr name og house I database-teacheren til samme som body-teacheren
+   * gem database-teacheren i databasen *
+    lav database-teacheren om til json
+    returner den med 200 
+
+
+    skriv til i stedet for id ved single
