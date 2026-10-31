@@ -1,14 +1,10 @@
 import express from "express";
 import { pool } from "./db.js";
 
-import * as housesRepository from "./repositories/houses.repository.js";
-import * as housesController from "./controllers/houses.controller.js";
-
-// houses R all - Get all houses
-app.get("/houses", housesController.getAllHouses);
-
-//houses R id - Get single house ID
-app.get("/houses:/id", housesController.getSingleHouse);
+import housesRouter from "./routers/houses.router.js";
+import teachersRouter from "./routers/teachers.router.js";
+import studentsRouter from "./routers/students.router.js";
+import coursesRouter from "./routers/courses.router.js";
 
 const app = express();
 const port = 3000;
@@ -16,10 +12,16 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(housesRouter);
+app.use(teachersRouter);
+app.use(studentsRouter);
+app.use(coursesRouter);
+
 app.get("/", (req, res) => {
   res.send("Hello, Hogwarts!");
 });
 
+/*
 //TEACHERS
 
 //GET all teachers
@@ -92,7 +94,9 @@ app.delete("/teachers/:id", async (req, res) => {
     res.status(500).json({ error: "Database error" });
   }
 });
+*/
 
+/*
 //STUDENTS
 // GET all students
 app.get("/students", async (req, res) => {
@@ -162,7 +166,9 @@ app.delete("/students/:id", async (req, res) => {
     res.status(500).json({ error: "Database error" });
   }
 });
+*/
 
+/*
 //HOUSES
 
 // houses R all - Get all houses
@@ -179,12 +185,12 @@ app.get("/houses", async (req, res) => {
 // GET single house by ID
 app.get("/houses/:id", async (req, res) => {
   try {
-    // const result = await pool.query("SELECT * FROM houses WHERE id = $1", [req.params.id]);
-    // if (result.rowCount === 0) return res.sendStatus(404);
+    // const result = await pool.query("SELECT * FROM houses WHERE id = $1", [req.params.id]); skal slettes senere
+    // if (result.rowCount === 0) return res.sendStatus(404); skal slettes senere
     const id = req.params.id;
     const house = await housesRepository.getHouseById(id);
 
-    // res.status(200).json(result.rows[0]);
+    // res.status(200).json(result.rows[0]); skal slettes senere
     if (house) {
       res.status(200).json(house);
     } else {
@@ -240,9 +246,11 @@ app.delete("/houses/:id", async (req, res) => {
     res.status(500).json({ error: "Database error" });
   }
 });
+*/
 
 console.log("Hello");
 
+/*
 //COURSES
 
 // GET all courses
@@ -313,6 +321,7 @@ app.delete("/courses/:id", async (req, res) => {
     res.status(500).json({ error: "Database error" });
   }
 });
+*/
 
 app.listen(port, () => {
   console.log(`Server kører på http://localhost:${port}`);
