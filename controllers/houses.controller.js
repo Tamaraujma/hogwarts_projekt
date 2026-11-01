@@ -16,10 +16,10 @@ export async function getSingleHouse(req, res) {
     const house = await housesRepository.getHouseById(id);
 
     if (house) {
-      res.status(200).json(house);
-    } else {
-      res.status(404);
+      return res.status(200).json(house);
     }
+
+    return res.sendStatus(404);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Database error" });
